@@ -5,8 +5,8 @@ import java.util.Objects;
 public class Film {
 	
 	private int id;
-	private int tiltle;
-	private String desciption;
+	private String title;
+	private String description;
 	private Integer releaseYear;
 	private int rentalDuration;
 	private double rentalRate;
@@ -14,7 +14,8 @@ public class Film {
 	private double replacementCost;
 	private String rating;
 	private String specialFeatures;
-	private int laguangeId;
+	private int language;
+	
 	
 	public Film() {
 		super();
@@ -28,20 +29,20 @@ public class Film {
 		this.id = id;
 	}
 
-	public int getTiltle() {
-		return tiltle;
+	public int getTitle() {
+		return getTitle();
 	}
 
-	public void setTiltle(int tiltle) {
-		this.tiltle = tiltle;
+	public void setTitle(String title) {
+		this.title = title;
 	}
 
-	public String getDesciption() {
-		return desciption;
+	public String getDescription() {
+		return description;
 	}
 
-	public void setDesciption(String desciption) {
-		this.desciption = desciption;
+	public void setDescription(String desciption) {
+		this.description = desciption;
 	}
 
 	public Integer getReleaseYear() {
@@ -100,18 +101,18 @@ public class Film {
 		this.specialFeatures = specialFeatures;
 	}
 
-	public int getLaguangeId() {
-		return laguangeId;
+	public int getLanguage() {
+		return language;
 	}
 
-	public void setLaguangeId(int laguangeId) {
-		this.laguangeId = laguangeId;
+	public void setLanguage(int language) {
+		this.language = language;
 	}
 
 	@Override
 	public int hashCode() {
-		return Objects.hash(desciption, id, laguangeId, length, rating, releaseYear, rentalDuration, rentalRate,
-				replacementCost, specialFeatures, tiltle);
+		return Objects.hash(description, id, language, length, rating, releaseYear, rentalDuration, rentalRate,
+				replacementCost, specialFeatures, title);
 	}
 
 	@Override
@@ -123,28 +124,28 @@ public class Film {
 		if (getClass() != obj.getClass())
 			return false;
 		Film other = (Film) obj;
-		return Objects.equals(desciption, other.desciption) && id == other.id && laguangeId == other.laguangeId
+		return Objects.equals(description, other.description) && id == other.id && language == other.language
 				&& Objects.equals(length, other.length) && Objects.equals(rating, other.rating)
 				&& Objects.equals(releaseYear, other.releaseYear) && rentalDuration == other.rentalDuration
 				&& Double.doubleToLongBits(rentalRate) == Double.doubleToLongBits(other.rentalRate)
 				&& Double.doubleToLongBits(replacementCost) == Double.doubleToLongBits(other.replacementCost)
-				&& Objects.equals(specialFeatures, other.specialFeatures) && tiltle == other.tiltle;
+				&& Objects.equals(specialFeatures, other.specialFeatures) && title == other.title;
 	}
 
 	@Override
 	public String toString() {
-		return "Film [id=" + id + ", tiltle=" + tiltle + ", desciption=" + desciption + ", releaseYear=" + releaseYear
+		return "Film [id=" + id + ", title=" + title + ", description=" + description + ", releaseYear=" + releaseYear
 				+ ", rentalDuration=" + rentalDuration + ", rentalRate=" + rentalRate + ", length=" + length
 				+ ", replacementCost=" + replacementCost + ", rating=" + rating + ", specialFeatures=" + specialFeatures
-				+ ", laguangeId=" + laguangeId + "]";
+				+ ", laguange=" + language+ "]";
 	}
 
 	public Film(int id, int tiltle, String desciption, Integer releaseYear, int rentalDuration, double rentalRate,
-			Integer length, double replacementCost, String rating, String specialFeatures, int laguangeId) {
+			Integer length, double replacementCost, String rating, String specialFeatures, String title, int language) {
 		super();
 		this.id = id;
-		this.tiltle = tiltle;
-		this.desciption = desciption;
+		this.title = title;
+		this.description = desciption;
 		this.releaseYear = releaseYear;
 		this.rentalDuration = rentalDuration;
 		this.rentalRate = rentalRate;
@@ -152,7 +153,7 @@ public class Film {
 		this.replacementCost = replacementCost;
 		this.rating = rating;
 		this.specialFeatures = specialFeatures;
-		this.laguangeId = laguangeId;
+		this.language = language;
 	}
 	           
 	
