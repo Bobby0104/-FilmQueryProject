@@ -6,38 +6,46 @@ import java.util.Scanner;
 
 import com.skilldistillery.filmquery.database.DatabaseAccessor;
 import com.skilldistillery.filmquery.database.DatabaseAccessorObject;
+import com.skilldistillery.filmquery.entities.Actor;
 import com.skilldistillery.filmquery.entities.Film;
 
 public class FilmQueryApp {
-  
-  DatabaseAccessor db = new DatabaseAccessorObject();
 
-  public static void main(String[] args) throws SQLException, ClassNotFoundException {
-    FilmQueryApp app = new FilmQueryApp();
-    app.test();
-//    app.launch();
-  }
+	DatabaseAccessor db = new DatabaseAccessorObject();
 
-  private void test() {
-    Film film = db.findFilmById(1);
-    System.out.println(film);
-  }
+	public static void main(String[] args) throws SQLException, ClassNotFoundException {
+		FilmQueryApp app = new FilmQueryApp();
+//    app.test();
+		app.launch();
+	}
 
-  private void launch() {
-    Scanner input = new Scanner(System.in);
-    
-    startUserInterface(input);
-    
-    input.close();
-  }
+//	private void test() throws SQLException {
+//		Film film = db.findFilmById(1);
+//		System.out.println(film);
+//	}
 
-  private void startUserInterface(Scanner input) throws SQLException {
-	    boolean keepGoing = true;
-	    do {
-	    	System.out.println("1. Search film by id \n2. Search film by keyword \n3. Exit ");
-	    	String userInput =  input.next();
-	    	
-	    	switch (userInput) {
+	private void launch() throws SQLException {
+		Scanner input = null;
+		try {
+			input = new Scanner(System.in);
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+
+		startUserInterface(input);
+
+		input.close();
+	}
+
+	private void startUserInterface(Scanner input) throws SQLException {
+		boolean keepGoing = true;
+
+		do {
+			System.out.println("1. Search film by id \n2. Search film by keyword \n3. Exit ");
+			String userInput = input.next();
+
+			switch (userInput) {
 			case "1":
 				System.out.println("What film would you like to retrieve?");
 				userInput = input.next();
@@ -47,7 +55,7 @@ public class FilmQueryApp {
 			case "2":
 				System.out.println("Please enter in a keyword: ");
 				userInput = input.next();
-				List<Film> keyword =  db.findFilmById(userInput);
+				List<Film> keyword = db.findFilmsByKeyword(userInput);
 				for (Film film : keyword) {
 					System.out.println(film);
 				}
@@ -59,10 +67,9 @@ public class FilmQueryApp {
 				System.out.println("That is not a valid selection");
 				break;
 			}
-	    } while(keepGoing);
-	  
-//	  make user menu with options for user
-    
-  }
+
+		} while (keepGoing);
+
+	}
 
 }
